@@ -2,6 +2,15 @@
 
 Make sure your environment has npm and Node.js before doing any work so that your app can run!
 
+
+# TODO:
+
+**This is my list of features. Anything I want to add to this app and is on my mind will end up here**
+
+TODO: change the favicon.ico file to fit the website!
+TODO: THIS IS A MAIN FEATURE! Create a button that prompts an AI such as ChatGPT to provide a welcome message from a psychic that is looking to offer a Tarot reading.
+TODO: research the robots.txt file since this will be used with search engines and provide a good robots.txt 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
