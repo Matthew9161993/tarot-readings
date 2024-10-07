@@ -2,6 +2,19 @@
 
 Make sure your environment has npm and Node.js before doing any work so that your app can run!
 
+Additional dependencies need to be installed in the project directory
+
+npm install axios
+
+Additional dependencies need to be installed in the **backend** directory using:
+
+npm init -y
+npm install express cors body-parser axios dotenv
+
+
+Start the backend server from the project directory with:
+node backend/server.js
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
