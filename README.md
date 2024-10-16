@@ -2,14 +2,17 @@
 
 Make sure your environment has npm and Node.js before doing any work so that your app can run!
 
-There is a backend script that is required to make API requests on your behalf. Start the backend server from the project directory with `node backend/server.js`
+If you are missing any npm dependencies, you can run `npm install` from the root project directory. There are two package.json files that contain the dependencies.
 
+There is a backend script that is required to make API requests on your behalf. 
 This backend server will make calls to OpenAI, so you will need to create a `.env` file and provide your OpenAI API key.
-You can create this file by running the following command from the project root with your API key.
+You can create this file by running the following command from the root project directory with your API key.
 
 `echo OPENAI_API_KEY=<your-api-key-here> > .env`
 
-If you are missing any npm dependencies, you can run `npm install` from the project. There are two package.json files that contain the dependencies.
+Start the backend server from the root project directory.
+
+`node backend/server.js`
 
 # Getting Started with Create React App
 
