@@ -2,7 +2,7 @@
 
 Make sure your environment has npm and Node.js before doing any work so that your app can run!
 
-If you are missing any npm dependencies, you can run `npm install` from the root project directory. There are two package.json files that contain the dependencies.
+If you are missing any npm dependencies, you can run `npm install` from the root project directory. There are two `package.json` files that contain the dependencies.
 
 There is a backend script that is required to make API requests on your behalf. 
 This backend server will make calls to OpenAI, so you will need to create a `.env` file and provide your OpenAI API key.

@@ -30,6 +30,51 @@
   color: #61dafb;
 }
 
+.fade-in {
+  opacity: 1; /* Fully visible */
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-out {
+  opacity: 0; /* Faded out */
+  transition: opacity 0.5s ease-out;
+}
+
+.Response-container {
+  background-color: #3d0066; /* Dark purple background */
+  border-radius: 12px; /* Rounded corners for a smooth look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  box-sizing: border-box;
+  height: 30vw;
+  margin: 20px 0; /* Add some margin for vertical spacing */
+  padding: 20px 40px;
+  text-align: left; /* Ensure text aligns to the left */
+  transition: opacity 1s ease-in;
+  vertical-align: middle;
+  white-space: pre-wrap;
+  width: 90vw;
+  word-wrap: break-word;
+}
+
+.Welcome-button {
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #601575, #2b2e6e);
+  color: white;
+  cursor: pointer;
+  height: 50vw;
+  font-size: 4vw;
+  font-family: 'Courier', monospace;
+  /*opacity: 0;*/
+  transition: transform 0.3s ease, opacity 1s ease-in;
+  width: 50vw;
+}
+
+.Welcome-button:hover {
+  transform: scale(1.2);  /* Slightly enlarges on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Adds shadow effect on hover */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
