@@ -4,6 +4,8 @@ Make sure your environment has npm and Node.js before doing any work so that you
 
 There is a backend script that is required to make API requests on your behalf. Start the backend server from the project directory with `node backend/server.js`
 
+If you are missing any npm dependencies, you can run `npm install` from the project. There are two package.json files that contain the dependencies.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
