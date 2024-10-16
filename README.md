@@ -5,7 +5,7 @@ Make sure your environment has npm and Node.js before doing any work so that you
 There is a backend script that is required to make API requests on your behalf. Start the backend server from the project directory with `node backend/server.js`
 
 This backend server will make calls to OpenAI, so you will need to create a `.env` file and provide your OpenAI API key.
-You can create this file by running the following command with your API key.
+You can create this file by running the following command from the project root with your API key.
 
 `echo OPENAI_API_KEY=<your-api-key-here> > .env`
 
