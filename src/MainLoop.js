@@ -29,7 +29,7 @@ const MainLoop = () => {
       setShowButton(false);
 
       try {
-        const res = await axios.post('http://localhost:5000/api/openai', {
+        const res = await axios.post('http://localhost:5001/api/openai', {
           prompt:
             'Pretend you are an esteemed Psychic. Entice the requester to do a tarot reading in four sentences.',
         });
