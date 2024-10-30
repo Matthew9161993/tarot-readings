@@ -45,14 +45,17 @@
   border-radius: 12px; /* Rounded corners for a smooth look */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
   box-sizing: border-box;
-  height: 30vw;
-  margin: 20px 0; /* Add some margin for vertical spacing */
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 20px auto; /* Add some margin for vertical spacing */
+  min-width: 800px;
+  max-width: 800px;
   padding: 20px 40px;
   text-align: left; /* Ensure text aligns to the left */
   transition: opacity 1s ease-in;
-  vertical-align: middle;
   white-space: pre-wrap;
-  width: 90vw;
+  width: 90%;
   word-wrap: break-word;
 }
 
@@ -62,12 +65,12 @@
   background: linear-gradient(135deg, #601575, #2b2e6e);
   color: white;
   cursor: pointer;
-  height: 50vw;
-  font-size: 4vw;
+  height: min(50vw, 50vh);
+  font-size: min(4vw, 4vh);
   font-family: 'Courier', monospace;
   /*opacity: 0;*/
   transition: transform 0.3s ease, opacity 1s ease-in;
-  width: 50vw;
+  width: min(50vw, 50vh);
 }
 
 .Welcome-button:hover {
