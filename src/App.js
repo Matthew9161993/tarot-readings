@@ -24,7 +24,7 @@ function WelcomeButton() {
 
       try {
         const res = await axios.post('http://localhost:5000/api/openai', {
-          prompt: 'Pretend you are an esteemed Psychic. Try to entice the requester to do a tarot reading in four sentences.',
+          prompt: 'Pretend you are an esteemed Psychic. Entice the requester to do a tarot reading in four sentences.',
         });
 
         typeWriterEffect(res.data.response);
@@ -45,8 +45,8 @@ function WelcomeButton() {
         setTypedText((prev) => prev + text[index]); // Add one character at a time
         index++;
 
-        // Generate a random delay between 40ms and 90ms
-        const randomDelay = Math.floor(Math.random() * 50) + 40;
+        // Generate a random delay between 5ms and 85ms
+        const randomDelay = Math.floor(Math.random() * 80) + 5;
 
         // Recursively call the function with a new delay
         setTimeout(typeNextCharacter, randomDelay);
