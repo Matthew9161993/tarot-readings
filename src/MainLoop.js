@@ -51,15 +51,9 @@ const MainLoop = () => {
         <Button onClick={handleClick} fade={fade}>
           Hello traveler...
         </Button>
-      ) : loading ? (
-        <div className={`Response-container fade-in`}>
-          <p>Loading...</p>
-        </div>
       ) : (
-      <>
         <ResponseContainer text={responseText} fade={fade} />
-        <RandomCards />
-      </>
+        /* <RandomCards /> */
       )}
     </div>
   );
