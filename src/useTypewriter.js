@@ -1,7 +1,7 @@
 // useTypewriter.js
 import { useState, useEffect } from 'react';
 
-const useTypewriter = (text, speedRange = [5, 85]) => {
+const useTypewriter = ( text, speedRange ) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
 

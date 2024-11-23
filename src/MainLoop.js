@@ -22,7 +22,6 @@ const MainLoop = () => {
 
   const handleClick = async () => {
     setFade(false); // Begin fade-out
-    setScene('prompt');
   
     setTimeout(async () => {
       try {
@@ -36,13 +35,17 @@ const MainLoop = () => {
         setResponseText('An error occurred while typing.');
       } finally {
         setFade(true);
+        setScene('prompt');
       }
     }, 1000);
   };
 
   const handleFinishTyping = (isFinished) => {
-    setScene('fan-cards');
-    console.log('scene is now ' + scene)
+    console.log(isFinished)
+    if (isFinished) {
+      setScene('fan-cards');
+      console.log('scene is now ' + scene)
+    }
   };
 
   return (
@@ -50,8 +53,14 @@ const MainLoop = () => {
       {scene === 'welcome' && <Button onClick={handleClick} fade={fade} >
         Hello traveler...
       </Button> }
-      {(scene === 'prompt' || scene === 'fan-cards') && <ResponseContainer text={responseText} fade={fade} onTypingComplete={handleFinishTyping}/>}
-      {scene === 'fan-cards' && <RandomCardsPrompt fade={fade}/>}
+      {
+        (scene === 'prompt' || scene === 'fan-cards') && 
+        <ResponseContainer text={responseText} fade={fade} onTypingComplete={handleFinishTyping()}/>
+      }
+      {
+        (scene === 'fan-cards') && 
+        <RandomCardsPrompt fade={fade}/>
+      }
     </div>
   );
 };
