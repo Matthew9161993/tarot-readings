@@ -1,15 +1,16 @@
+// MainLoop.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from './Button';
 import ResponseContainer from './ResponseContainer';
-import RandomCards from './RandomCards'
+import RandomCardsPrompt from './RandomCardsPrompt'; // Import your new component
 import './MainLoop.css'; // Import for container styling
 
 const MainLoop = () => {
   const [showButton, setShowButton] = useState(true);
   const [fade, setFade] = useState(false);
   const [responseText, setResponseText] = useState('');
-  const [loading, setLoading] = useState(false); // For loading state
+  const [showAfterComponent, setShowAfterComponent] = useState(false); // New state
 
   useEffect(() => {
     // Trigger fade-in when component mounts
@@ -20,12 +21,15 @@ const MainLoop = () => {
     return () => clearTimeout(fadeInTimeout);
   }, []);
 
+  const handleTypingComplete = () => {
+    setShowAfterComponent(true); // Update state when typing is complete
+  };
+
   const handleClick = async () => {
     setFade(false); // Begin fade-out
-    setLoading(true); // Start loading
 
     // Wait for fade-out to complete before proceeding
-    setTimeout(async () => {
+    setTimeout(async () => { // Duration matches CSS transition
       setShowButton(false);
 
       try {
@@ -40,20 +44,30 @@ const MainLoop = () => {
         setResponseText('An error occurred while typing.');
       } finally {
         setFade(true); // Trigger fade-in for the response
-        setLoading(false); // End loading
       }
-    }, 1000); // Matches the CSS transition duration
+    }, 1000); // Matches the CSS transition duration (1s)
   };
 
   return (
-    <div className="MainLoop-container">
+    <div className={`MainLoop-container ${fade ? 'fade-in' : 'fade-out'}`}>
       {showButton ? (
-        <Button onClick={handleClick} fade={fade}>
-          Hello traveler...
+        <Button onClick={handleClick} fade={fade} >
+          {'Hello traveler...'}
         </Button>
       ) : (
-        <ResponseContainer text={responseText} fade={fade} />
-        /* <RandomCards /> */
+        <>
+          <ResponseContainer 
+            text={responseText} 
+            fade={fade} 
+            onTypingComplete={handleTypingComplete} // Pass callback
+          />
+          {showAfterComponent ? (
+          <RandomCardsPrompt fade={fade} /> // Conditionally render new component
+          ) : (
+            <>
+            </>
+          )}
+        </>
       )}
     </div>
   );

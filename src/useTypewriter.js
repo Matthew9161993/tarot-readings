@@ -6,7 +6,7 @@ const useTypewriter = (text, speedRange = [5, 85]) => {
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    let index = 0;
+    let index = -1;
     let isCancelled = false;
 
     // Reset states when text or speedRange changes

@@ -1,0 +1,39 @@
+/* RandomCards.css */
+
+.random-cards-container {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transition duration matches JavaScript timeouts */
+  }
+  
+  .random-cards-container.fade-in {
+    opacity: 1;
+  }
+  
+  .random-cards-container.fade-out {
+    opacity: 0;
+  }
+  
+  .cards-display {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+  }
+  
+  .card-image {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Optional: Style the refresh button */
+  /*
+  .refresh-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  */
+  
