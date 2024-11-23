@@ -17,9 +17,4 @@ const ResponseContainer = ({ text, fade, onTypingComplete }) => {
   );
 };
 
-ResponseContainer.propTypes = {
-  text: PropTypes.string.isRequired,
-  fade: PropTypes.bool.isRequired,
-};
-
 export default ResponseContainer;

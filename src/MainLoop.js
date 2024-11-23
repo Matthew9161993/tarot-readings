@@ -7,10 +7,9 @@ import RandomCardsPrompt from './RandomCardsPrompt'; // Import your new componen
 import './MainLoop.css'; // Import for container styling
 
 const MainLoop = () => {
-  const [showButton, setShowButton] = useState(true);
+  const [scene, setScene] = useState('welcome');
   const [fade, setFade] = useState(false);
   const [responseText, setResponseText] = useState('');
-  const [showAfterComponent, setShowAfterComponent] = useState(false); // New state
 
   useEffect(() => {
     // Trigger fade-in when component mounts
@@ -21,54 +20,40 @@ const MainLoop = () => {
     return () => clearTimeout(fadeInTimeout);
   }, []);
 
-  const handleTypingComplete = () => {
-    setShowAfterComponent(true); // Update state when typing is complete
-  };
-
   const handleClick = async () => {
     setFade(false); // Begin fade-out
-
-    // Wait for fade-out to complete before proceeding
-    setTimeout(async () => { // Duration matches CSS transition
-      setShowButton(false);
-
+  
+    setTimeout(async () => {
+      setScene('prompt');
+  
       try {
         const res = await axios.post('http://localhost:5001/api/openai', {
           prompt:
             'Pretend you are an esteemed Psychic. Entice the requester to do a tarot reading in four sentences.',
         });
-
+        console.log('actual response ' + res.data.response);
         setResponseText(res.data.response);
       } catch (error) {
         console.error('Error fetching data from backend:', error.message);
-        setResponseText('An error occurred while typing.');
+        setResponseText('An errasdfor occurred while typing.');
       } finally {
-        setFade(true); // Trigger fade-in for the response
+        setFade(true);
       }
-    }, 1000); // Matches the CSS transition duration (1s)
+    }, 1000);
+  };
+
+  const handleFinishTyping = (isFinished) => {
+    setScene('fan-cards');
+    console.log('scene is now ' + scene)
   };
 
   return (
     <div className={`MainLoop-container ${fade ? 'fade-in' : 'fade-out'}`}>
-      {showButton ? (
-        <Button onClick={handleClick} fade={fade} >
-          {'Hello traveler...'}
-        </Button>
-      ) : (
-        <>
-          <ResponseContainer 
-            text={responseText} 
-            fade={fade} 
-            onTypingComplete={handleTypingComplete} // Pass callback
-          />
-          {showAfterComponent ? (
-          <RandomCardsPrompt fade={fade} /> // Conditionally render new component
-          ) : (
-            <>
-            </>
-          )}
-        </>
-      )}
+      {scene === 'welcome' && <Button onClick={handleClick} fade={fade} >
+        Hello traveler...
+      </Button> }
+      {(scene === 'prompt' || scene === 'fan-cards') && <ResponseContainer text={responseText} fade={fade} onTypingComplete={handleFinishTyping}/>}
+      {scene === 'fan-cards' && <RandomCardsPrompt fade={fade}/>}
     </div>
   );
 };
