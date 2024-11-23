@@ -22,20 +22,18 @@ const MainLoop = () => {
 
   const handleClick = async () => {
     setFade(false); // Begin fade-out
+    setScene('prompt');
   
     setTimeout(async () => {
-      setScene('prompt');
-  
       try {
         const res = await axios.post('http://localhost:5001/api/openai', {
           prompt:
             'Pretend you are an esteemed Psychic. Entice the requester to do a tarot reading in four sentences.',
         });
-        console.log('actual response ' + res.data.response);
         setResponseText(res.data.response);
       } catch (error) {
         console.error('Error fetching data from backend:', error.message);
-        setResponseText('An errasdfor occurred while typing.');
+        setResponseText('An error occurred while typing.');
       } finally {
         setFade(true);
       }
