@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from './Button';
 import ResponseContainer from './ResponseContainer';
-import RandomCardsPrompt from './RandomCardsPrompt'; // Import your new component
-import './MainLoop.css'; // Import for container styling
+import RandomCardsPrompt from './RandomCardsPrompt';
+import ClassicSpread from './ClassicSpread';
+import './MainLoop.css';
 
 const MainLoop = () => {
   const [scene, setScene] = useState('welcome');
@@ -53,12 +54,25 @@ const MainLoop = () => {
         setFade(true);
         setScene('prompt');
       }
-    }, 1000);
+    }, 2000);
   };
 
   const handleFinishTyping = () => {
     setScene('fan-cards');
     console.log('scene is now ' + scene)
+  };
+
+  // Define the startTheSpread function to change the scene to 'classic-spread'
+  const startTheSpread = () => {
+    setFade(false); // Begin fade-out of MainLoop-container
+    setSpreadFade(false); // Begin fade-out of RandomCardsPrompt
+    console.log('Fading out to classic-spread');
+
+    // Wait for the fade-out duration before changing the scene
+    setTimeout(() => {
+      setScene('classic-spread');
+      setFade(true); // Begin fade-in of MainLoop-container with new scene
+    }, 1000);
   };
 
   return (
@@ -69,15 +83,18 @@ const MainLoop = () => {
       </Button> }
       {
         (scene === 'prompt' || scene === 'fan-cards') && 
-        <ResponseContainer 
-          text={responseText}
-          fade={fade}
-          onTypingComplete={handleFinishTyping}
-        />
+        <>
+          <ResponseContainer 
+            text={responseText}
+            fade={fade}
+            onTypingComplete={handleFinishTyping}
+          />
+          <RandomCardsPrompt fade={spreadFade} startTheSpread={startTheSpread}/>
+        </>
       }
       {
-        (scene === 'fan-cards') && 
-        <RandomCardsPrompt fade={spreadFade}/>
+        (scene === 'classic-spread') &&
+        <ClassicSpread />
       }
     </div>
   );

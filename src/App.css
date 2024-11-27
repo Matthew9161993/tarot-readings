@@ -73,11 +73,6 @@
   width: min(50vw, 50vh);
 }
 
-.Welcome-button:hover {
-  transform: scale(1.2);  /* Slightly enlarges on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Adds shadow effect on hover */
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

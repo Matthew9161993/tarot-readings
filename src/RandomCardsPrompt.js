@@ -6,7 +6,7 @@ import './RandomCardsPrompt.css';
 const TOTAL_CARDS = 78; // Total number of cards in the deck
 const CARDS_TO_DISPLAY = 3; // Number of cards to display
 
-function RandomCardsPrompt({ fade }) { // Accept fade prop
+function RandomCardsPrompt({ fade, startTheSpread }) { // Accept fade prop
   const [selectedCards, setSelectedCards] = useState([]);
 
   // Function to generate three unique random numbers between 1 and TOTAL_CARDS
@@ -45,6 +45,9 @@ function RandomCardsPrompt({ fade }) { // Accept fade prop
       {/* Optional: Button to refresh the cards */}
       <button className="refresh-button" onClick={selectRandomCards}>
         Shuffle Cards
+      </button>
+      <button className="refresh-button" onClick={startTheSpread}>
+        Perform the Ceremony
       </button>
     </div>
   );

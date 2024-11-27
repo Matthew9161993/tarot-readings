@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Button.css'; // Import corresponding CSS
 
 const Button = ({ onClick, children, fade }) => {
@@ -13,12 +12,6 @@ const Button = ({ onClick, children, fade }) => {
       {children}
     </button>
   );
-};
-
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  fade: PropTypes.bool.isRequired,
 };
 
 export default Button;
