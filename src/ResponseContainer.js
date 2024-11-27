@@ -3,7 +3,7 @@ import React from 'react';
 import Typewriter from './Typewriter';
 import './ResponseContainer.css'; // Import corresponding CSS
 
-const SPEED_RANGE = [50, 150];
+const SPEED_RANGE = [15, 60];
 
 const ResponseContainer = ({ text, fade, onTypingComplete }) => {
   return (
