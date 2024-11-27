@@ -1,7 +1,6 @@
 // src/components/RandomCards/RandomCards.js
 
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
 import './RandomCardsPrompt.css';
 
 const TOTAL_CARDS = 78; // Total number of cards in the deck
@@ -50,9 +49,5 @@ function RandomCardsPrompt({ fade }) { // Accept fade prop
     </div>
   );
 }
-
-RandomCardsPrompt.propTypes = {
-  fade: PropTypes.bool.isRequired, // Define prop type
-};
 
 export default RandomCardsPrompt;

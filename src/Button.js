@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Button.css'; // Import corresponding CSS
 
 const Button = ({ onClick, children, fade }) => {
+  
   return (
     <button
       className={`Welcome-button ${fade ? 'fade-in' : 'fade-out'}`}

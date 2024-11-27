@@ -9,6 +9,7 @@ import './MainLoop.css'; // Import for container styling
 const MainLoop = () => {
   const [scene, setScene] = useState('welcome');
   const [fade, setFade] = useState(false);
+  const [spreadFade, setSpreadFade] = useState(false);
   const [responseText, setResponseText] = useState('');
 
   useEffect(() => {
@@ -19,6 +20,21 @@ const MainLoop = () => {
 
     return () => clearTimeout(fadeInTimeout);
   }, []);
+  
+  // New useEffect to handle fade-in for RandomCardsPrompt
+  useEffect(() => {
+    if (scene === 'fan-cards') {
+      // Trigger fade-in after a short delay to ensure the component has mounted
+      const spreadFadeInTimeout = setTimeout(() => {
+        setSpreadFade(true);
+      }, 100); // Adjust delay as needed
+
+      return () => clearTimeout(spreadFadeInTimeout);
+    } else {
+      // Reset spreadFade when not in 'fan-cards' scene
+      setSpreadFade(false);
+    }
+  }, [scene]);
 
   const handleClick = async () => {
     setFade(false); // Begin fade-out
@@ -61,7 +77,7 @@ const MainLoop = () => {
       }
       {
         (scene === 'fan-cards') && 
-        <RandomCardsPrompt fade={fade}/>
+        <RandomCardsPrompt fade={spreadFade}/>
       }
     </div>
   );

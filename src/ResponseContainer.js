@@ -1,6 +1,5 @@
 // ResponseContainer.js
 import React from 'react';
-import PropTypes from 'prop-types';
 import Typewriter from './Typewriter';
 import './ResponseContainer.css'; // Import corresponding CSS
 
