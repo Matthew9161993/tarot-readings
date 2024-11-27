@@ -1,0 +1,38 @@
+/* ClassicSpread.css */
+
+.classic-spread-container {
+    opacity: 0; /* Initial state: fully transparent */
+    transition: opacity 2s ease-in-out; /* Transition property */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Add additional styling as needed */
+  }
+  
+  .classic-spread-container.fade-in {
+    opacity: 1; /* Final state: fully opaque */
+  }
+  
+  .classic-spread-container.fade-out {
+    opacity: 0; /* Optional: For fade-out transitions if needed */
+  }
+  
+  .spread-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .spread-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .spread-card h3 {
+    margin-bottom: 10px;
+  }
+  

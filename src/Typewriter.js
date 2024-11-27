@@ -1,21 +1,24 @@
+// Typewriter.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import useTypewriter from './useTypewriter'; // Custom Hook
 import './Typewriter.css'; // Optional: Add styles if needed
 
-const Typewriter = ({ text, speedRange }) => {
-  const displayedText = useTypewriter(text, speedRange);
+const Typewriter = ({ text, speedRange, onComplete }) => {
+  const { displayedText, isCompleted } = useTypewriter(text, speedRange);
 
-  return <p className="Typewriter-text">{displayedText}</p>;
-};
+  // Invoke the callback when typing is complete
+  React.useEffect(() => {
+    if (isCompleted && onComplete) {
+      onComplete();
+    }
+  }, [isCompleted, onComplete]);
 
-Typewriter.propTypes = {
-  text: PropTypes.string.isRequired,
-  speedRange: PropTypes.arrayOf(PropTypes.number),
-};
-
-Typewriter.defaultProps = {
-  speedRange: [5, 85],
+  return (
+    <div>
+      <p className="Typewriter-text">{displayedText}</p>
+    </div>
+  );
 };
 
 export default Typewriter;

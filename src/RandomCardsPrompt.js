@@ -1,12 +1,12 @@
 // src/components/RandomCards/RandomCards.js
 
 import React, { useState, useEffect } from 'react';
-import './RandomCards.css';
+import './RandomCardsPrompt.css';
 
 const TOTAL_CARDS = 78; // Total number of cards in the deck
 const CARDS_TO_DISPLAY = 3; // Number of cards to display
 
-function RandomCards() {
+function RandomCardsPrompt({ fade, startTheSpread }) { // Accept fade prop
   const [selectedCards, setSelectedCards] = useState([]);
 
   // Function to generate three unique random numbers between 1 and TOTAL_CARDS
@@ -27,15 +27,11 @@ function RandomCards() {
 
   // Select random cards on component mount
   useEffect(() => {
-    const selectRandomCards = () => {
-      const randomNumbers = generateUniqueRandomNumbers();
-      setSelectedCards(randomNumbers);
-    };
     selectRandomCards();
   }, []);
 
   return (
-    <div className="random-cards-container">
+    <div className={`random-cards-container ${fade ? 'fade-in' : 'fade-out'}`}>
       <div className="cards-display">
         {selectedCards.map((cardNumber) => (
           <img
@@ -47,11 +43,14 @@ function RandomCards() {
         ))}
       </div>
       {/* Optional: Button to refresh the cards */}
-{/*      <button className="refresh-button" onClick={selectRandomCards}>
+      <button className="refresh-button" onClick={selectRandomCards}>
         Shuffle Cards
-      </button>*/}
+      </button>
+      <button className="refresh-button" onClick={startTheSpread}>
+        Perform the Ceremony
+      </button>
     </div>
   );
 }
 
-export default RandomCards;
+export default RandomCardsPrompt;
