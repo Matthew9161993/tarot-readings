@@ -40,22 +40,24 @@ const MainLoop = () => {
     }, 1000);
   };
 
-  const handleFinishTyping = (isFinished) => {
-    console.log(isFinished)
-    if (isFinished) {
-      setScene('fan-cards');
-      console.log('scene is now ' + scene)
-    }
+  const handleFinishTyping = () => {
+    setScene('fan-cards');
+    console.log('scene is now ' + scene)
   };
 
   return (
     <div className={`MainLoop-container ${fade ? 'fade-in' : 'fade-out'}`}>
-      {scene === 'welcome' && <Button onClick={handleClick} fade={fade} >
+      {scene === 'welcome' &&
+       <Button onClick={handleClick} fade={fade} >
         Hello traveler...
       </Button> }
       {
         (scene === 'prompt' || scene === 'fan-cards') && 
-        <ResponseContainer text={responseText} fade={fade} onTypingComplete={handleFinishTyping()}/>
+        <ResponseContainer 
+          text={responseText}
+          fade={fade}
+          onTypingComplete={handleFinishTyping}
+        />
       }
       {
         (scene === 'fan-cards') && 
