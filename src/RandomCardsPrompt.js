@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './RandomCardsPrompt.css';
+import cardsData from './cards.json';
 
 const TOTAL_CARDS = 78; // Total number of cards in the deck
 const CARDS_TO_DISPLAY = 3; // Number of cards to display
@@ -30,17 +31,41 @@ function RandomCardsPrompt({ fade, startTheSpread }) { // Accept fade prop
     selectRandomCards();
   }, []);
 
+  // Helper function to get card data by number
+  const getCardData = (cardNumber) => {
+    return cardsData.find((card) => card.number === cardNumber);
+  };
+
   return (
     <div className={`random-cards-container ${fade ? 'fade-in' : 'fade-out'}`}>
       <div className="cards-display">
-        {selectedCards.map((cardNumber) => (
-          <img
-            key={cardNumber}
-            src={`/waite-deck/card${cardNumber}.jpg`}
-            alt={`Card ${cardNumber}`}
-            className="card-image"
-          />
-        ))}
+        <div className="one-card">
+          {selectedCards[0] && (
+            <img
+              src={`/waite-deck/card${selectedCards[0]}.jpg`}
+              alt={`${getCardData(selectedCards[0]).name}`}
+              className="card-image"
+            />
+          )}
+        </div>
+        <div className="one-card">
+          {selectedCards[1] && (
+            <img
+              src={`/waite-deck/card${selectedCards[1]}.jpg`}
+              alt={`${getCardData(selectedCards[1]).name}`}
+              className="card-image"
+            />
+          )}
+        </div>
+        <div className="one-card">
+          {selectedCards[2] && (
+            <img
+              src={`/waite-deck/card${selectedCards[2]}.jpg`}
+              alt={`${getCardData(selectedCards[2]).name}`}
+              className="card-image"
+            />
+          )}
+        </div>
       </div>
       {/* Optional: Button to refresh the cards */}
       <button className="refresh-button" onClick={selectRandomCards}>
