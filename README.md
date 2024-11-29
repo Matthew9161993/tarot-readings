@@ -87,3 +87,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 TODO: Consider accessibility options for the app and implement.
+TODO: Add card flip feature
+TODO: Add mildly animated background for aesthetics.

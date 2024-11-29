@@ -12,7 +12,6 @@ const ResponseContainer = ({ text, fade, onTypingComplete }) => {
         text={text}
         speedRange={SPEED_RANGE}
         onComplete={onTypingComplete} // Pass callback to Typewriter
-        fade={fade} // Pass fade prop to Typewriter
       />
     </div>
   );

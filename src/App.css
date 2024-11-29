@@ -4,17 +4,6 @@
   font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -38,46 +27,4 @@
 .fade-out {
   opacity: 0; /* Faded out */
   transition: opacity 0.5s ease-out;
-}
-
-.Response-container {
-  background-color: #3d0066; /* Dark purple background */
-  border-radius: 12px; /* Rounded corners for a smooth look */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-  box-sizing: border-box;
-  color: #ffffff;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  margin: 20px auto; /* Add some margin for vertical spacing */
-  min-width: 800px;
-  max-width: 800px;
-  padding: 20px 40px;
-  text-align: left; /* Ensure text aligns to the left */
-  transition: opacity 1s ease-in;
-  white-space: pre-wrap;
-  width: 90%;
-  word-wrap: break-word;
-}
-
-.Welcome-button {
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #601575, #2b2e6e);
-  color: white;
-  cursor: pointer;
-  height: min(50vw, 50vh);
-  font-size: min(4vw, 4vh);
-  font-family: 'Courier', monospace;
-  /*opacity: 0;*/
-  transition: transform 0.3s ease, opacity 1s ease-in;
-  width: min(50vw, 50vh);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

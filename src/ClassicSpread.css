@@ -1,14 +1,15 @@
 /* src/components/ClassicSpread/ClassicSpread.css */
 
 .classic-spread-container {
-  opacity: 0; /* Initial state: fully transparent */
-  transition: opacity 0.5s ease-in-out; /* Transition for fade-in/out */
+  position: absolute; /* Position the container relative to the viewport */
+  top: 0; /* Align the top of the container to the top of the viewport */
+  left: 0; /* Align the container to the left */
+  width: 100%; /* Show only a little! */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  padding: 20px;
-  max-width: 800px; /* Optional: Limit the width for better readability */
-  margin: 0 auto; /* Center the container horizontally */
+  align-items: center;
 }
 
 .classic-spread-container.fade-in {
@@ -22,8 +23,7 @@
 .spread-cards {
   display: flex;
   justify-content: center; /* Center the cards horizontally */
-  gap: 20px; /* Space between the cards */
-  margin-top: 20px; /* Space between header and cards */
+  gap: 60px; /* Space between the cards */
   flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
 }
 
@@ -32,21 +32,26 @@
   flex-direction: column;
   align-items: center; /* Center content within each card */
   width: 200px; /* Set a fixed width for consistency */
+  color: #edbcf3
 }
 
 .spread-card h3 {
-  font-size: 1.1em;
-  margin-bottom: 10px;
+  font-size: 2rem;
   text-align: center;
+  border-radius: 50% 10%;
 }
 
 .card-image {
   width: 100%;
   height: auto;
-  border: 2px solid #ccc;
+  border: 2px solid #800491;
   border-radius: 8px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1); /* Optional: Adds depth */
   transition: transform 0.3s ease; /* Optional: Hover effect */
+}
+
+.card-image.inverted {
+  transform: rotate(180deg); /* Rotates the card upside down */
 }
 
 .card-image:hover {
@@ -56,7 +61,7 @@
 .spread-response {
   margin-top: 30px; /* Space between cards and response */
   padding: 15px 20px;
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #571775; /* Light background for contrast */
   border: 1px solid #ddd;
   border-radius: 8px;
   width: 100%; /* Take full width of the container */
@@ -67,8 +72,8 @@
 
 .spread-response p {
   margin: 0;
-  font-size: 1em;
-  color: #333;
+  font-size: 1rem;
+  color: #d3d0d0;
 }
 
 /* Optional: Style for the Reshuffle Button */
@@ -86,4 +91,12 @@
 
 .reshuffle-button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+/* Ensure proper spacing for smaller devices */
+@media (max-width: 768px) {
+  .classic-spread-container {
+    margin-top: 30px; /* Reduce top margin for smaller screens */
+    padding: 10px;
+  }
 }

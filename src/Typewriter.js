@@ -1,18 +1,45 @@
-// Typewriter.js
-import React from 'react';
-import PropTypes from 'prop-types';
-import useTypewriter from './useTypewriter'; // Custom Hook
-import './Typewriter.css'; // Optional: Add styles if needed
+import React, { useState, useEffect } from 'react';
+import './Typewriter.css';
 
 const Typewriter = ({ text, speedRange, onComplete }) => {
-  const { displayedText, isCompleted } = useTypewriter(text, speedRange);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isCompleted, setIsCompleted] = useState(false);
 
-  // Invoke the callback when typing is complete
-  React.useEffect(() => {
-    if (isCompleted && onComplete) {
-      onComplete();
+  useEffect(() => {
+    let index = 0;
+    let isCancelled = false;
+
+    // Reset state when `text` changes
+    setDisplayedText(text.charAt(index));
+    setIsCompleted(false);
+
+    const typeNextCharacter = () => {
+      if (isCancelled) return;
+
+      if (index < text.length) {
+        setDisplayedText((prev) => prev + text.charAt(index));
+        index++;
+        const [min, max] = speedRange;
+        const randomDelay = Math.floor(Math.random() * (max - min + 1)) + min;
+        setTimeout(typeNextCharacter, randomDelay);
+      } else {
+        setIsCompleted(true);
+      }
+    };
+
+    typeNextCharacter();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [text, speedRange]);
+
+  useEffect(() => {
+    if (isCompleted && text.length > 0) {
+      console.log("typewriter is handling")
+      onComplete(); // Invoke callback only when typing is fully complete
     }
-  }, [isCompleted, onComplete]);
+  }, [isCompleted]);
 
   return (
     <div>
