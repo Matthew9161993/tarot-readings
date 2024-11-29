@@ -3,8 +3,7 @@
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
   box-sizing: border-box;
-  width: 90%;
-  max-width: 800px; /* Prevents over-expansion on large screens */
+  width: 90%; /* Prevents over-expansion on large screens */
   margin: 20px auto; /* Centers the container */
   padding: 20px 40px;
   text-align: left;

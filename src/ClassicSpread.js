@@ -82,14 +82,11 @@ const ClassicSpread = ({ handleFinishTyping }) => {
 
   return (
     <div className={`classic-spread-container ${isVisible ? 'fade-in' : 'fade-out'}`}>
-      {/* Classic Spread Header */}
-      <h2>Classic Spread</h2>
-
       {/* Spread Cards */}
       <div className="spread-cards">
         {/* Card 1: The Past */}
         <div className="spread-card">
-          <h3>Card 1: The Past</h3>
+          <h3>The Past</h3>
           {selectedCards[0] && (
             <img
               src={`/waite-deck/card${selectedCards[0]}.jpg`}
@@ -101,7 +98,7 @@ const ClassicSpread = ({ handleFinishTyping }) => {
 
         {/* Card 2: The Present */}
         <div className="spread-card">
-          <h3>Card 2: The Present</h3>
+          <h3>The Present</h3>
           {selectedCards[1] && (
             <img
               src={`/waite-deck/card${selectedCards[1]}.jpg`}
@@ -113,7 +110,7 @@ const ClassicSpread = ({ handleFinishTyping }) => {
 
         {/* Card 3: The Future */}
         <div className="spread-card">
-          <h3>Card 3: The Future</h3>
+          <h3>The Future</h3>
           {selectedCards[2] && (
             <img
               src={`/waite-deck/card${selectedCards[2]}.jpg`}
