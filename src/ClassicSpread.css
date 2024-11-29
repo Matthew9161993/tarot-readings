@@ -4,7 +4,7 @@
   position: absolute; /* Position the container relative to the viewport */
   top: 0; /* Align the top of the container to the top of the viewport */
   left: 0; /* Align the container to the left */
-  width: 100%; /* Make it span the full width of the viewport */
+  width: 100%; /* Show it all! */
   padding: 20px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
