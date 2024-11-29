@@ -4,11 +4,12 @@ import React, { useState, useEffect } from 'react';
 import './ClassicSpread.css'; // Import corresponding CSS
 import cardsData from './cards.json';
 import axios from 'axios';
+import ResponseContainer from './ResponseContainer';
 
 const TOTAL_CARDS = 78; // Total number of cards in the deck
 const CARDS_TO_DISPLAY = 3; // Number of cards to display
 
-const ClassicSpread = () => {
+const ClassicSpread = ({ handleFinishTyping }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedCards, setSelectedCards] = useState([]);
   const [responseText, setResponseText] = useState('');
@@ -48,31 +49,28 @@ const ClassicSpread = () => {
 
   // Function to generate spread interpretation
   const generateSpreadInterpretation = async () => {
-    if (selectedCards.length < CARDS_TO_DISPLAY) {
-      setResponseText('Please wait while we generate your spread.');
-      return;
-    }
-  
     const pastCard = getCardData(selectedCards[0]);
     const presentCard = getCardData(selectedCards[1]);
     const futureCard = getCardData(selectedCards[2]);
 
-    try {
-      const res = await axios.post('http://localhost:5001/api/openai', {
-        prompt:
-          `You are an esteemed psychic that performs a reading from a spread of tarot cards.
-           The spread sits before you on a table with three cards in three positions.
-           The first position is labeled The Past, and the card occupying it is "${pastCard.name}".
-           The second position is labeled The Present, and the card occupying it is "${presentCard.name}".
-           The third position is labeled The Future, and the card occupying it is "${futureCard.name}".
-           You know that the requester is seeking something.
-          `
-      });
-      setResponseText(res.data.response);
-    } catch (error) {
-      console.error('Error fetching data from backend:', error.message);
-      setResponseText('An error occurred while discussing the spread.');
-    }
+    setTimeout(async () => {
+      try {
+        const res = await axios.post('http://localhost:5001/api/openai', {
+          prompt:
+            `You are an esteemed psychic that performs a reading from a spread of tarot cards.
+            The spread sits before you on a table with three cards in three positions.
+            The first position is labeled The Past, and the card occupying it is "${pastCard.name}".
+            The second position is labeled The Present, and the card occupying it is "${presentCard.name}".
+            The third position is labeled The Future, and the card occupying it is "${futureCard.name}".
+            You know that the requester is seeking something.
+            `
+        });
+        setResponseText(res.data.response);
+      } catch (error) {
+        console.error('Error fetching data from backend:', error.message);
+        setResponseText('An error occurred while discussing the spread.');
+      }
+    }, 2000);
   };
 
   // Use useEffect to generate interpretation once selectedCards are set
@@ -125,11 +123,12 @@ const ClassicSpread = () => {
           )}
         </div>
       </div>
-
       {/* Spread Response */}
-      <div className="spread-response">
-        <p>{responseText || 'Generating your spread interpretation...'}</p>
-      </div>
+      <ResponseContainer 
+          text={responseText}
+          fade={isVisible}
+          onTypingComplete={handleFinishTyping}
+        />
     </div>
   );
 };

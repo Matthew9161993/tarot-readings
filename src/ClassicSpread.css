@@ -1,14 +1,22 @@
 /* src/components/ClassicSpread/ClassicSpread.css */
 
+/* Adjust the container to allow spacing near the top */
 .classic-spread-container {
-  opacity: 0; /* Initial state: fully transparent */
-  transition: opacity 0.5s ease-in-out; /* Transition for fade-in/out */
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  padding: 20px;
-  max-width: 800px; /* Optional: Limit the width for better readability */
-  margin: 0 auto; /* Center the container horizontally */
+  align-items: center;
+}
+
+/* Add specific styling to the header */
+.classic-spread-container h2 {
+  margin-bottom: 20px; /* Space between the header and the cards */
+  margin-top: 0; /* Optional: Reset top margin */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem; /* Adjust the font size */
+  text-align: center; /* Center-align the text */
 }
 
 .classic-spread-container.fade-in {
@@ -56,7 +64,7 @@
 .spread-response {
   margin-top: 30px; /* Space between cards and response */
   padding: 15px 20px;
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #571775; /* Light background for contrast */
   border: 1px solid #ddd;
   border-radius: 8px;
   width: 100%; /* Take full width of the container */
@@ -67,8 +75,8 @@
 
 .spread-response p {
   margin: 0;
-  font-size: 1em;
-  color: #333;
+  font-size: 1rem;
+  color: #d3d0d0;
 }
 
 /* Optional: Style for the Reshuffle Button */
@@ -86,4 +94,12 @@
 
 .reshuffle-button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+/* Ensure proper spacing for smaller devices */
+@media (max-width: 768px) {
+  .classic-spread-container {
+    margin-top: 30px; /* Reduce top margin for smaller screens */
+    padding: 10px;
+  }
 }

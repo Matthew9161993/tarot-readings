@@ -1,13 +1,16 @@
-// useTypewriter.js
 import { useState, useEffect } from 'react';
 
-const useTypewriter = ( text, speedRange ) => {
+const useTypewriter = (text, speedRange) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
-    let index = 0;
+    let index = -1; // Reset index for new text
     let isCancelled = false;
+
+    // Reset state on new text
+    setDisplayedText('');
+    setIsCompleted(false);
 
     const typeNextCharacter = () => {
       if (isCancelled) return;
@@ -28,7 +31,7 @@ const useTypewriter = ( text, speedRange ) => {
     return () => {
       isCancelled = true; // Cleanup to prevent state updates on unmounted component
     };
-  }, [text, speedRange]);
+  }, [text, speedRange]); // Re-run effect when `text` or `speedRange` changes
 
   return { displayedText, isCompleted };
 };
