@@ -4,8 +4,7 @@
   position: absolute; /* Position the container relative to the viewport */
   top: 0; /* Align the top of the container to the top of the viewport */
   left: 0; /* Align the container to the left */
-  width: 100%; /* Show it all! */
-  padding: 20px;
+  width: 100%; /* Show only a little! */
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   display: flex;
@@ -49,6 +48,10 @@
   border-radius: 8px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1); /* Optional: Adds depth */
   transition: transform 0.3s ease; /* Optional: Hover effect */
+}
+
+.card-image.inverted {
+  transform: rotate(180deg); /* Rotates the card upside down */
 }
 
 .card-image:hover {
