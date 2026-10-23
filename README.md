@@ -42,13 +42,14 @@ Defaults:
 
 Local registry testing:
 
-- Registry: `192.168.1.11:4443`
+- Registry: `192.168.1.250:4443`
 - Registry mode: insecure HTTP
-- Frontend image: `192.168.1.11:4443/tarot-frontend:<tag>`
-- Backend image: `192.168.1.11:4443/my-first-container:<tag>`
+- Frontend image: `192.168.1.250:4443/tarot-frontend:<tag>`
+- Backend image: `192.168.1.250:4443/my-first-container:<tag>`
 - The local registry wrapper pushes by default. Use `--no-push` to build without pushing.
-- The wrapper uses a dedicated buildx builder named `tarot-local-registry-builder`
-  and configures BuildKit to push to the registry over HTTP.
+- The wrapper uses a registry-specific buildx builder and configures BuildKit to
+  push to that registry over HTTP. This avoids reusing HTTPS settings when the
+  local registry address changes.
 
 # Frontend Development
 

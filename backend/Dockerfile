@@ -1,15 +1,17 @@
-FROM node:23.5-alpine3.20
+FROM node:24.22.1-alpine3.24
+
 WORKDIR /usr/local/app
 
-COPY . ./backend
-COPY .env ./.env
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev \
+    && npm cache clean --force
+
+COPY --chown=node:node server.js ./server.js
+COPY --chown=node:node data ./data
+COPY --chown=node:node templates ./templates
+
+USER node
 
 EXPOSE 5001
 
-# # Install the application dependencies
-RUN apk add npm
-RUN npm install
-
-CMD [ "node", "backend/server.js" ]
+CMD ["node", "server.js"]
